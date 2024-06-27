@@ -1,0 +1,201 @@
+{
+    "position": "top",
+    "layer": "top",
+    "height": 30,
+    "margin-top": 8,
+    "margin-bottom": 8,
+    "margin-left": 16,
+    "margin-right": 16,
+    "modules-left": ["custom/launcher", "custom/playerctl", "custom/playerlabel"],
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/workspaces","pulseaudio","cpu","memory","custom/lock","custom/wlogout"],
+    // Modules configuration
+	"clock": {
+	"format-alt": "{:%H:%M}",
+        "format": "{:%a, %d. %b %Y - %H:%M}"
+	},
+	"hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+			"1": "ⅼ",
+			"2": "Ⅱ",
+			"3": "Ⅲ",
+			"4": "Ⅳ",
+			"5": "Ⅴ",
+			"urgent": " ",
+			"active": " ",
+			"default": "󰧞",
+    "sort-by-number": true
+    },
+    },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "hyprland/window": {  
+         "max-length": 24,
+         "format": "{}"   // <--- these is the default value  
+    },
+
+    "custom/playerctl": {
+      "format": "{icon}",
+      "return-type": "json",
+      "max-length": 64,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F --player=spotify",
+      "on-click-middle": "playerctl --player=spotify play-pause",
+      "on-click": "playerctl --player=spotify previous",
+      "on-click-right": "playerctl --player=spotify next",
+      "format-icons": {
+        "Paused": "<span foreground='#928374'>󰒮 󰐌 󰒭</span>",
+        "Playing": "<span foreground='#d3d3d3'>󰒮 󰏥 󰒭</span>"
+      },
+    },
+
+    "custom/playerlabel": {
+      "format": "<span>{}</span>",
+      "return-type": "json",
+      "max-length": 48,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl play-pause",
+      "on-click": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+        "Pauses": "<span foreground='#d3d3d3'>󰒮 󰐌 󰒭</span>",
+        "Playing": "<span foreground='#d3d3d3'>󰒮 󰏥 󰒭</span>"
+      },
+    },
+      "custom/spotify": {
+      "exec": "/usr/bin/python3 ~/.config/waybar/mediaplayer.py --player spotify",
+      "max-length": 48,
+      "format": "{} ",
+      "return-type": "json",
+      "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous"
+       },
+
+	"battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format":"{icon}  {capacity}%",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+	},
+
+  "memory": {
+    "format": "󰍛 {}%",
+    "format-alt": "󰍛 {used}/{total} GiB",
+    "interval": 5
+  },
+
+  "cpu": {
+    "format": "󰻠 {usage}%",
+    "format-alt": "󰻠 {avg_frequency} GHz",
+    "interval": 5
+  },
+
+  "disk": {
+    "format": "󰋊 {}%",
+    "format-alt": "󰋊 {used}/{total} GiB",
+    "interval": 5,
+    "path": "/mnt/Datos"
+  },
+	
+	"network": {
+        	"format-wifi": "󰤨",
+        	"format-ethernet": "󰱔 {ifname}: Aesthetic ({signalStrength}%)",
+        	"format-linked": " {ifname} (No IP)",
+        	"format-disconnected": "󰤭",
+        	"format-alt": " {ifname}: {ipaddr}/{cidr}",
+          "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+          "on-click-right": "nm-connection-editor"
+	},
+
+	"tray": {
+		"icon-size": 16,
+		"spacing": 5
+	},
+
+	"backlight": {
+        // "device": "acpi_video1",
+	"format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+//	"on-scroll-up":,
+//	"on-scroll-down":,
+	},
+
+"pulseaudio": {
+	"format": "{volume}% {icon}",
+	"format-bluetooth": "{volume}% {icon}",
+	"format-muted": "  ",
+	"format-icons": {
+		"alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+		"headphones": " ",
+		"handsfree": " ",
+		"headset": " ",
+		"phone": " ",
+		"portable": " ",
+		"car": "",
+		"default": [" ", "  "]
+	},
+	"scroll-step": 2,
+	"on-click": "pavucontrol"
+},
+       
+
+  "custom/randwall": {
+    "format": "󰏘",
+    "on-click": "bash $HOME/.config/hypr/randwall.sh",
+    "on-click-right": "bash $HOME/.config/hypr/wall.sh"
+  },
+  "custom/launcher": {
+//    "format": "󰈸",
+      "format": "󰣇 ",
+   // "on-click": "bash $HOME/.config/wofi/launcher.sh",
+    //  "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
+     "on-click": "wofi --show drun -I -a -n -W 600 -H 376",
+   // "on-click-right": "bash $HOME/.config/rofi/run.sh"  
+    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
+  },
+
+  "custom/wf-recorder": {
+		"format": "{}",
+		"interval": "once",
+		"exec": "echo ''",
+		"tooltip": "false",
+		"exec-if": "pgrep 'wf-recorder'",
+		"on-click": "exec ./scripts/wlrecord.sh",
+		"signal": 8
+	},
+
+  "custom/hyprpicker": {
+    "format": "󰈋",
+    "on-click": "hyprpicker -a -f hex",
+    "on-click-right": "hyprpicker -a -f rgb"
+
+     },
+  "custom/lock": {
+    "format": "☭",
+    "interval": "once",
+    "tooltip": false,
+    "on-click": "hyprlock"
+     },
+  "custom/wlogout": {
+    "format": "⏻",
+    "interval": "once",
+    "on-click": "wlogout",
+    "tooltip": false,
+   },
+  }
