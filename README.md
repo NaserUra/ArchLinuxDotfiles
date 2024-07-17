@@ -1,2 +1,3 @@
 # ArchLinuxDotfiles
-Hallo das ist nur ein vorrübergehender GIT um auf meinen neuen PC zu wechseln.
+These are my Arch Hyprland Dotfiles!
+If you have questions feel free to contact me.
