@@ -7,7 +7,7 @@ call plug#end()
 synatx on
 set tabstop=4
 set softtabstop=4
-set autindent
+set autoindent
 set smartindent
 set termguicolors
 
