@@ -4,7 +4,7 @@ Plug 'https://github.com/neoclide/coc.nvim'
 
 call plug#end()
 
-synatx on
+syntax on
 set tabstop=4
 set softtabstop=4
 set autoindent
