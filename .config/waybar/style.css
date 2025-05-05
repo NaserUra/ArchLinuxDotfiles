@@ -71,7 +71,6 @@ window#waybar {
 
 
 
-
 #custom-date {
 	color: #201f1e;
         font-weight: bold;
@@ -120,47 +119,64 @@ window#waybar {
 
 #battery {
     color: #9ece6a;
+    font-weight: bold;
 }
 
 #battery.charging {
     color: #9ece6a;
+    font-weight: bold;
 }
 
 #battery.warning:not(.charging) {
     background-color: #f7768e;
     color: #24283b;
     border-radius: 5px 5px 5px 5px;
+    font-weight: bold;
 }
 
 #backlight {
-    background-color: #24283b;
-    color: #db4b4b;
+    color: #d3d3d3;
     border-radius: 0px 0px 0px 0px;
-    margin: 5px;
-    margin-left: 0px;
+    border-left: 0px solid #d3d3d3;
+    border-top: 3px solid #d3d3d3;
+    border-right: 0px solid #d3d3d3;
+    border-bottom: 3px solid #d3d3d3;
+    
+    margin: 4px;
     margin-right: 0px;
-    padding: 0px 0px;
+    margin-left: 0px;
+    padding: 0px 10px 0px 10px;
+    font-weight: bold;
 }
 
 #network {
-    color: #609fc4;
-    border-radius: 8px;
-    margin-right: 5px;
+    color: #d3d3d3;
+    border-radius: 8px 0px 0px 8px;
+    border-left: 3px solid #d3d3d3;
+    border-top: 3px solid #d3d3d3;
+    border-right: 0px solid #d3d3d3;
+    border-bottom: 3px solid #d3d3d3;
+    
+    margin: 4px;
+    margin-right: 0px;
+    margin-left: 5px;
+    padding: 0px 10px 0px 10px;
+    font-weight: bold;
 }
 
 #pulseaudio {
     color: #d3d3d3;
-    border-radius: 8px 0px 0px 8px;
-    border-left: 3px solid #d3d3d3;
-    border-right: 0px;
+    border-radius: 0px 0px 0px 0px;
+    border-left: 0px solid #d3d3d3;
     border-top: 3px solid #d3d3d3;
+    border-right: 0px solid #d3d3d3;
     border-bottom: 3px solid #d3d3d3;
+    
     margin: 4px;
-    padding-left: 10px;
-    margin-left: 5px;
     margin-right: 0px;
-    font-size: 15px;
-    font-weight: bold; 
+    margin-left: 0px;
+    padding: 0px 10px 0px 10px;
+    font-weight: bold;
 }
 
 #pulseaudio.muted {
